@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "80:80"
+    networks:
+      - frontend-network
+
+  backend:
+    build: ./dummy-backend
+    ports:
+      - "3000:3000"
+    networks:
+      - backend-network
+
+networks:
+  frontend-network:
+    driver: bridge
+
+  backend-network:
+    driver: bridge
