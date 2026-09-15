@@ -18,12 +18,11 @@ jobs:
       - name: Setup Docker PATH
         shell: powershell
         run: |
-          $env:Path += ";C:\Users\ashnm\AppData\Local\Programs\DockerDesktop\resources\bin"
+          Add-Content $env:GITHUB_PATH "C:\Users\ashnm\AppData\Local\Programs\DockerDesktop\resources\bin"
           docker --version
           docker compose version
 
       - name: Deploy Application
         shell: powershell
         run: |
-          $env:Path += ";C:\Users\ashnm\AppData\Local\Programs\DockerDesktop\resources\bin"
           docker compose up -d --build
