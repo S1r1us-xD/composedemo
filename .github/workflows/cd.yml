@@ -15,5 +15,15 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
+      - name: Setup Docker PATH
+        shell: powershell
+        run: |
+          $env:Path += ";C:\Users\ashnm\AppData\Local\Programs\DockerDesktop\resources\bin"
+          docker --version
+          docker compose version
+
       - name: Deploy Application
-        run: docker compose up -d --build
+        shell: powershell
+        run: |
+          $env:Path += ";C:\Users\ashnm\AppData\Local\Programs\DockerDesktop\resources\bin"
+          docker compose up -d --build
